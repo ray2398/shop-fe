@@ -1,0 +1,91 @@
+<div class="filters">
+  <ion-item>
+    <ion-select
+      label="Categorías"
+      placeholder="Selecciona una opción"
+      okText="Aceptar"
+      cancelText="Cancelar"
+      [(ngModel)]="selectedCategory"
+    >
+      <ion-select-option value="Lácteos">Lácteos</ion-select-option>
+      <ion-select-option value="Refrescos">Refrescos</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <small
+    ><ion-text color="danger">{{
+      errorCategory && errorCategory
+    }}</ion-text></small
+  >
+  <ion-item class="ion-margin-top">
+    <ion-input
+      label="Desde:"
+      placeholder="dd-mm-yyyy"
+      [maskito]="dateMask"
+      [maskitoElement]="maskPredicate"
+      [(ngModel)]="dateStart"
+    >
+    </ion-input>
+  </ion-item>
+  <ion-item class="ion-margin-top">
+    <ion-input
+      label="Hasta:"
+      placeholder="dd-mm-yyyy"
+      [maskito]="dateMask"
+      [maskitoElement]="maskPredicate"
+      [(ngModel)]="dateFinish"
+    ></ion-input>
+  </ion-item>
+  <small
+    ><ion-text color="danger">{{ errorDate && errorDate }}</ion-text></small
+  >
+  <div>
+    <ion-button
+      class="ion-margin-top ion-margin-bottom"
+      (click)="searchFilters()"
+      >Aplicar Filtros</ion-button
+    >
+    <ion-button
+      class="ion-margin-top ion-margin-bottom"
+      (click)="resetFilters()"
+      >Limpiar Filtros</ion-button
+    >
+  </div>
+</div>
+
+<ion-searchbar
+  color="tertiary"
+  placeholder="Ingresa un valor"
+  (ionInput)="filterItems($event)"
+></ion-searchbar>
+
+<ion-grid>
+  <ion-row class="table-header">
+    <ion-col size="2"><strong>No.</strong></ion-col>
+    <ion-col size="3"><strong>Nombre</strong></ion-col>
+    <ion-col size="3"><strong>Categoria</strong></ion-col>
+    <ion-col size="4"><strong>Caducidad</strong></ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="products.length === 0">
+    <ion-col size="12" class="text-center"> No hay datos disponibles. </ion-col>
+  </ion-row>
+
+  <ion-row *ngFor="let item of products" class="table-row">
+    <ion-col size="2">{{ item.id }}</ion-col>
+    <ion-col size="3">{{ item.nombre }}</ion-col>
+    <ion-col size="3">{{ item.categoria }}</ion-col>
+    <ion-col size="4">{{ item.fechaCaducidad }}</ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-footer>
+  <ion-button (click)="prevPage()" [disabled]="currentPage === 1"
+    >Anterior</ion-button
+  >
+  <ion-button
+    (click)="nextPage()"
+    [disabled]="currentPage === totalPages || products.length < 1"
+    >Siguiente</ion-button
+  >
+  <p>Página {{ currentPage }} de {{ totalPages }}</p>
+</ion-footer>

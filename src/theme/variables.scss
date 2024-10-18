@@ -1,2 +1,111 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
+/* Set variables for all modes */
+:root {
+    /* Set the font family of the entire app */
+    --ion-font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+      "Roboto", sans-serif;
+  
+    --ion-color-primary: #69bb7b;
+    --ion-color-primary-rgb: 105, 187, 123;
+    --ion-color-primary-contrast: #000000;
+    --ion-color-primary-contrast-rgb: 0, 0, 0;
+    --ion-color-primary-shade: #5ca56c;
+    --ion-color-primary-tint: #78c288;
+  
+    --ion-color-secondary: #7abf5a;
+    --ion-color-secondary-rgb: 122, 191, 90;
+    --ion-color-secondary-contrast: #000000;
+    --ion-color-secondary-contrast-rgb: 0, 0, 0;
+    --ion-color-secondary-shade: #6ba84f;
+    --ion-color-secondary-tint: #87c56b;
+  
+    --ion-color-tertiary: #bac8d9;
+    --ion-color-tertiary-rgb: 186, 200, 217;
+    --ion-color-tertiary-contrast: #000000;
+    --ion-color-tertiary-contrast-rgb: 0, 0, 0;
+    --ion-color-tertiary-shade: #a4b0bf;
+    --ion-color-tertiary-tint: #c1cedd;
+  
+    --ion-color-light: #f6f8fc;
+    --ion-color-light-rgb: 246, 248, 252;
+    --ion-color-light-contrast: #000000;
+    --ion-color-light-contrast-rgb: 0, 0, 0;
+    --ion-color-light-shade: #d8dade;
+    --ion-color-light-tint: #f7f9fc;
+  
+    --ion-color-text: #193940;
+    --ion-color-text-rgb: 25, 57, 64;
+    --ion-color-text-contrast: #ffffff;
+    --ion-color-text-contrast-rgb: 255, 255, 255;
+    --ion-color-text-shade: #163238;
+    --ion-color-text-tint: #304d53;
+  
+    --ion-color-danger: #ff4961;
+    --ion-color-danger-rgb: 255, 73, 97;
+    --ion-color-danger-contrast: #ffffff;
+    --ion-color-danger-contrast-rgb: 255, 255, 255;
+    --ion-color-danger-shade: #e04055;
+    --ion-color-danger-tint: #ff5b71;
+  }
+  
+  /* Set text color of the entire app for iOS only */
+  :root.ios {
+    --ion-text-color: #193940;
+  }
+  
+  /* Set text color of the entire app for Material Design only */
+  :root.md {
+    --ion-text-color: #193940;
+  }
+  
+  ion-tab-bar,
+  ion-tab-button {
+    background-color: #fff;
+    height: 70px;
+  }
+  
+  ion-toolbar {
+    --background: #f6f8fc;
+    --color: #193940;
+  }
+  
+  ion-content {
+    --background: #f6f8fc;
+  }
+  
+  .vertical-align {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .img-login {
+    width: 50%;
+    height: auto;
+  }
+  
+  ion-item {
+    --background: transparent;
+    --color: #193940;
+    --border-color: #bac8d9;
+    --border-style: solid;
+    --border-width: 2px;
+    --border-radius: 20px;
+  }
+  
+  .tabs-label {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  ion-toolbar {
+    --background: #69bb7b !important;
+    --color: #f6f8fc;
+  
+  }
+  
+  .alert-wrapper {
+    background: #e5e5e5 !important;
+  }

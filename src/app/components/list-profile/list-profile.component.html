@@ -1,0 +1,11 @@
+<ion-list>
+  <ion-item lines="none" *ngFor="let item of items">
+    <ion-icon
+      aria-hidden="true"
+      [name]="item.icon"
+      slot="start"
+      color="primary"
+    ></ion-icon>
+    <ion-label color="text">{{ item.value }}</ion-label>
+  </ion-item>
+</ion-list>
