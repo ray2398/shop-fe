@@ -6,7 +6,7 @@ import { Tab1Page } from './tab1.page';
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 import { ExploreContainerComponentModule } from 'src/app/pages/explore-container/explore-container.module';
-import { MaskitoDirective } from '@maskito/angular';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import { MaskitoDirective } from '@maskito/angular';
     FormsModule,
     ExploreContainerComponentModule,
     Tab1PageRoutingModule,
-    MaskitoDirective,
+    SharedModule,
   ],
   declarations: [Tab1Page],
 })
