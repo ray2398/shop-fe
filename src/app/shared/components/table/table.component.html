@@ -18,10 +18,10 @@
   >
   <ion-item class="ion-margin-top">
     <ion-input
+      #dateInput
       label="Desde:"
       placeholder="dd-mm-yyyy"
       [maskito]="dateMask"
-      [maskitoElement]="maskPredicate"
       [(ngModel)]="dateStart"
     >
     </ion-input>
@@ -31,7 +31,6 @@
       label="Hasta:"
       placeholder="dd-mm-yyyy"
       [maskito]="dateMask"
-      [maskitoElement]="maskPredicate"
       [(ngModel)]="dateFinish"
     ></ion-input>
   </ion-item>

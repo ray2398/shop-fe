@@ -25,8 +25,8 @@ export class TableComponent implements OnInit {
     mask: [/\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/],
   };
 
-  readonly maskPredicate: MaskitoElementPredicate = async (el) =>
-    (el as HTMLIonInputElement).getInputElement();
+  // readonly maskPredicate: MaskitoElementPredicate = async (el) =>
+  //   (el as HTMLIonInputElement).getInputElement();
 
   constructor(private requestService: ProductsService) {}
 
