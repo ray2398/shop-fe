@@ -119,6 +119,7 @@ export class TableComponent implements OnInit {
   }
 
   isValidFilters(): boolean {
+    let regex = /^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(\d{4})$/;
     if (
       this.selectedCategory === '' &&
       this.dateStart === '' &&
@@ -134,6 +135,11 @@ export class TableComponent implements OnInit {
     if (this.dateStart === '' && this.dateFinish !== '') {
       this.errorDate = 'Ingresa las Fechas';
       return false;
+    }
+    if (regex.test(this.dateStart) === false || regex.test(this.dateFinish) === false) {
+      this.errorDate =
+          'Formato de fecha inválido';
+        return false;
     }
     if (this.dateStart !== '' && this.dateFinish !== '') {
       const startDate = new Date(this.dateStart.split('-').reverse().join('-'));
