@@ -36,18 +36,22 @@ export class TableComponent implements OnInit {
 
   async getAllProducts(
     page: number,
-    query: string = '',
     forceUpdate: boolean = false
   ) {
-    if (!forceUpdate && this.productCache[page] && !query) {
+    if (!forceUpdate && this.productCache[page]) {
       this.products = this.productCache[page];
       return;
     }
 
     const lastVisibleParam = page > 0 ? this.lastVisible : null;
-
     const response = await this.requestService
-      .getProducts({ lastVisible: lastVisibleParam, search: query })
+      .getProducts({
+        lastVisible: lastVisibleParam,
+        search: this.searchTerm,
+        category: this.selectedCategory,
+        dateStart: this.dateStart,
+        dateFinish: this.dateFinish
+      })
       .toPromise();
 
     const newProducts = response.products.results.filter(
@@ -72,11 +76,7 @@ export class TableComponent implements OnInit {
     if (this.productCache[this.currentPage]) {
       this.products = this.productCache[this.currentPage];
     } else {
-      if (this.searchTerm !== '') {
-        await this.getAllProducts(this.currentPage, this.searchTerm, true);
-      } else {
-        await this.getAllProducts(this.currentPage, '', true);
-      }
+      await this.getAllProducts(this.currentPage, true);
     }
   }
 
@@ -94,34 +94,56 @@ export class TableComponent implements OnInit {
     }
   }
 
-  async filterItems(event: CustomEvent) {
+  async filterItemsByText(event: CustomEvent) {
     if (event.detail.value !== '') {
       const valSearch = event.detail.value.toLowerCase();
       this.reset();
+      this.currentPage = 1;
       this.searchTerm = valSearch;
-      await this.getAllProducts(1, valSearch, true);
+      await this.getAllProducts(1, true);
     } else {
       this.reset();
       this.currentPage = 1;
       this.searchTerm = '';
-      await this.getAllProducts(1, '', true);
+      await this.getAllProducts(1, true);
     }
   }
 
   async searchFilters() {
     this.clearMessageError();
     if (this.isValidFilters()) {
+      this.reset();
+      this.currentPage = 1;
+      await this.getAllProducts(1, true);
     }
   }
 
   isValidFilters(): boolean {
-    if (this.selectedCategory === '') {
+    if (
+      this.selectedCategory === '' &&
+      this.dateStart === '' &&
+      this.dateFinish === ''
+    ) {
       this.errorCategory = 'Selecciona una categoria';
       return false;
     }
-    if (this.dateStart === '' && this.dateFinish === '') {
+    if (this.dateStart !== '' && this.dateFinish === '') {
       this.errorDate = 'Ingresa las Fechas';
       return false;
+    }
+    if (this.dateStart === '' && this.dateFinish !== '') {
+      this.errorDate = 'Ingresa las Fechas';
+      return false;
+    }
+    if (this.dateStart !== '' && this.dateFinish !== '') {
+      const startDate = new Date(this.dateStart.split('-').reverse().join('-'));
+      const endDate = new Date(this.dateFinish.split('-').reverse().join('-'));
+
+      if (startDate > endDate) {
+        this.errorDate =
+          'La fecha de inicio no puede ser mayor a la fecha final';
+        return false;
+      }
     }
     return true;
   }
@@ -144,6 +166,8 @@ export class TableComponent implements OnInit {
     this.dateStart = '';
     this.dateFinish = '';
     this.selectedCategory = '';
-    await this.getAllProducts(1, '', true);
+    this.searchTerm = '';
+    this.currentPage = 1;
+    await this.getAllProducts(1, true);
   }
 }

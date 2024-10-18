@@ -54,8 +54,8 @@
 
 <ion-searchbar
   color="tertiary"
-  placeholder="Ingresa un valor"
-  (ionInput)="filterItems($event)"
+  placeholder="Ingresa un valor" [(ngModel)]="searchTerm"
+  (ionInput)="filterItemsByText($event)"
 ></ion-searchbar>
 
 <ion-grid>
