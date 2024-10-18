@@ -1,17 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { AuthService } from './auth.service';
 import { HttpGenericService } from './http-generic.service';
 
-describe('AuthService', () => {
-  let service: AuthService;
+describe('HttpGenericService', () => {
+  let service: HttpGenericService<any>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [HttpGenericService]
+      providers: [HttpGenericService],
     });
-    service = TestBed.inject(AuthService);
+    service = TestBed.inject(HttpGenericService);
   });
 
   it('should be created', () => {

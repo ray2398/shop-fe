@@ -1,14 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { LoginPage } from './login.page';
+import { AuthService } from 'src/app/services/auth.service';
+import { HttpGenericService } from 'src/app/services/http-generic.service';
 
 describe('LoginPage', () => {
   let component: LoginPage;
-  let fixture: ComponentFixture<LoginPage>;
+  let authService: AuthService;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginPage);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      declarations: [LoginPage],
+      providers: [AuthService, HttpGenericService],
+    });
+
+    authService = TestBed.inject(AuthService);
+    component = TestBed.createComponent(LoginPage).componentInstance;
   });
 
   it('should create', () => {

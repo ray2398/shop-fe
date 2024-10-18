@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Item } from 'src/app/interfaces/item.interface';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-list-profile',
@@ -7,8 +6,6 @@ import { Item } from 'src/app/interfaces/item.interface';
   styleUrls: ['./list-profile.component.scss'],
 })
 export class ListProfileComponent  implements OnInit {
-
-  @Input() items: Item[] = [];
 
   constructor() { }
 

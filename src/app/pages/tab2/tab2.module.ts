@@ -5,8 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Tab2Page } from './tab2.page';
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
-import { ExploreContainerComponentModule } from 'src/app/components/explore-container/explore-container.module';
-import { ListProfileComponent } from 'src/app/components/list-profile/list-profile.component';
+import { ExploreContainerComponentModule } from 'src/app/pages/explore-container/explore-container.module';
 
 @NgModule({
   imports: [
@@ -16,6 +15,6 @@ import { ListProfileComponent } from 'src/app/components/list-profile/list-profi
     ExploreContainerComponentModule,
     Tab2PageRoutingModule,
   ],
-  declarations: [Tab2Page, ListProfileComponent],
+  declarations: [Tab2Page],
 })
 export class Tab2PageModule {}

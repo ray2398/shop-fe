@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class HttpGenericServiceService<T> {
+export class HttpGenericService<T> {
 
   constructor(
     private http: HttpClient

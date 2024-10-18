@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
-
-import { ExploreContainerComponentModule } from '../components/explore-container/explore-container.module';
-
+import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { AuthService } from 'src/app/services/auth.service';
+import { HttpGenericService } from 'src/app/services/http-generic.service';
 import { Tab2Page } from './tab2.page';
 
 describe('Tab2Page', () => {
   let component: Tab2Page;
-  let fixture: ComponentFixture<Tab2Page>;
+  let authService: AuthService;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       declarations: [Tab2Page],
-      imports: [IonicModule.forRoot(), ExploreContainerComponentModule]
-    }).compileComponents();
+      providers: [AuthService, HttpGenericService],
+    });
 
-    fixture = TestBed.createComponent(Tab2Page);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    authService = TestBed.inject(AuthService);
+    component = TestBed.createComponent(Tab2Page).componentInstance;
   });
 
   it('should create', () => {

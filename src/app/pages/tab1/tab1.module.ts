@@ -5,8 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
-import { ExploreContainerComponentModule } from 'src/app/components/explore-container/explore-container.module';
-import { TableComponent } from 'src/app/components/table/table.component';
+import { ExploreContainerComponentModule } from 'src/app/pages/explore-container/explore-container.module';
 import { MaskitoDirective } from '@maskito/angular';
 
 @NgModule({
@@ -18,6 +17,6 @@ import { MaskitoDirective } from '@maskito/angular';
     Tab1PageRoutingModule,
     MaskitoDirective,
   ],
-  declarations: [Tab1Page, TableComponent],
+  declarations: [Tab1Page],
 })
 export class Tab1PageModule {}

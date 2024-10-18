@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpGenericServiceService } from './http-generic-service.service';
 import { map } from 'rxjs';
 import { Auth } from 'src/app/interfaces/auth.interface';
+import { HttpGenericService } from './http-generic.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ import { Auth } from 'src/app/interfaces/auth.interface';
 export class AuthService {
 
   constructor(
-    private http : HttpGenericServiceService<any>,
+    private http : HttpGenericService<Auth>,
   ) { }
 
   login(data: Auth) {
